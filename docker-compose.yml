@@ -1,0 +1,19 @@
+version: '2'
+
+services:
+  db:
+    image: postgres:9.6.1
+    environment:
+      POSTGRES_PASSWORD: mypass
+
+  web:
+    build: .
+    ports:
+      - "80:3000"
+    volumes:
+      - './:/opt/app'
+    environment:
+      RAILS_ENV: development
+      POSTGRES_PASSWORD: mypass
+    depends_on:
+      - db
