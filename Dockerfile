@@ -1,6 +1,6 @@
 FROM ruby:2.3
 
-RUN apt-get update && apt-get install -y nodejs qt4-dev-tools qt4-dev-tools libqt4-dev libqt4-core libqt4-gui xvfb
+RUN apt-get update && apt-get install -y nodejs qt5-default libqt5webkit5-dev gstreamer1.0-plugins-base gstreamer1.0-tools gstreamer1.0-x xvfb
 RUN apt-get update && apt-get install -y postgresql-client
 
 WORKDIR /tmp
