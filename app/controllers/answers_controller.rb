@@ -3,7 +3,7 @@ class AnswersController < ApplicationController
 
   # GET /answers/new
   def new
-    render component: 'Answer', props: { options: Option.all }
+    @options = Option.all
   end
 
   # POST /answers.json
@@ -25,6 +25,6 @@ class AnswersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def answer_params
-      params.fetch(:answer, {})
+      params.fetch(:answer).permit(choices_attributes: [:chosen_id], user_attributes: [:name, :email])
     end
 end

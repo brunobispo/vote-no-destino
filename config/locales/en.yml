@@ -21,4 +21,10 @@
 
 en:
   show_result: "Show result"
+  name: 'Name'
+  email: 'Email'
+  registration_successful: 'You have successfully registered'
+  registration_failed: 'The registration failed'
+  your_favorite_ranking: 'Your ranking'
+  general_favorite_ranking: 'General ranking'
 

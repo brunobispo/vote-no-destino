@@ -29,4 +29,22 @@ feature 'Answer the survey', type: :feature, js: true do
 
     expect(page).to have_content(t 'show_result')
   end
+
+  scenario 'save answer and user' do
+    finish_the_answering
+    fill_in User.human_attribute_name('name'), with: 'Bruno'
+    fill_in User.human_attribute_name('email'), with: 'me@brunobispo.com'
+
+    expect{
+      click_on t('show_result')
+      expect(page).to have_content(t 'registration_successful')
+    }.to change{ Answer.count }.by(1).and(change{ User.count }.by(1))
+  end
+
+  def finish_the_answering
+    create(:option, name: 'São Paulo')
+    create(:option, name: 'Rio de Janeiro')
+    visit new_answer_path
+    choose 'São Paulo'
+  end
 end

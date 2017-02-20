@@ -40,6 +40,9 @@ gem 'jbuilder', '~> 2.5'
 # Allow translations access from JS
 gem "i18n-js", ">= 3.0.0.rc11"
 
+# Form serializing to object
+gem 'rails-assets-jquery-serialize-object', source: 'https://rails-assets.org'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri

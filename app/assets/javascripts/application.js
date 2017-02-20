@@ -15,7 +15,8 @@
 //= require turbolinks
 //= require react
 //= require react_ujs
-//= require components
 //= require i18n.js
 //= require i18n/translations
+//= require jquery-serialize-object
+//= require components
 //= require_tree .
