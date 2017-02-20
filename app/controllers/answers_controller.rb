@@ -3,7 +3,8 @@ class AnswersController < ApplicationController
 
   # GET /answers/new
   def new
-    @options = Option.all
+    @survey = Survey.last
+    @options = @survey.options
   end
 
   # POST /answers.json
@@ -11,7 +12,7 @@ class AnswersController < ApplicationController
     @answer = Answer.new(answer_params)
 
     if @answer.save
-      render :show, status: :created, location: @answer
+      render :show, status: :created
     else
       render json: @answer.errors, status: :unprocessable_entity
     end
@@ -25,6 +26,6 @@ class AnswersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def answer_params
-      params.fetch(:answer).permit(choices_attributes: [:chosen_id], user_attributes: [:name, :email])
+      params.fetch(:answer).permit(:survey_id, choices_attributes: [:chosen_id], user_attributes: [:name, :email])
     end
 end

@@ -3,6 +3,7 @@ class Form extends React.Component {
   handleSubmit(e) {
     const data = {
       answer: {
+        survey_id: this.props.survey.id,
         choices_attributes: this.props.choices.map((option) => ({chosen_id: option.id})),
         user_attributes: $(e.currentTarget).serializeObject()
       }
@@ -28,7 +29,8 @@ class Form extends React.Component {
   }
 }
 
-Answer.propTypes = {
+Form.propTypes = {
   choices: React.PropTypes.arrayOf(React.PropTypes.object),
+  survey: React.PropTypes.object,
   onSubmit: React.PropTypes.func,
 }

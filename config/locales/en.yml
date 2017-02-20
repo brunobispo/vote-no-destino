@@ -25,6 +25,7 @@ en:
   email: 'Email'
   registration_successful: 'You have successfully registered'
   registration_failed: 'The registration failed'
-  your_favorite_ranking: 'Your ranking'
-  general_favorite_ranking: 'General ranking'
+  your_ranking: 'Your ranking'
+  general_ranking: 'General ranking'
+  loading: 'Loading...'
 

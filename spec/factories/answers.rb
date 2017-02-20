@@ -1,18 +1,17 @@
 # == Schema Information
 #
-# Table name: options
+# Table name: answers
 #
 #  id         :integer          not null, primary key
-#  name       :string
-#  image_url  :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  user_id    :integer
 #  survey_id  :integer
 #
 
 FactoryGirl.define do
-  factory :option do
-    name Faker::Name.name
+  factory :answer do
     survey
+    user
   end
 end

@@ -49,6 +49,9 @@ RSpec.configure do |config|
   # Include i18n helpers
   config.include I18nHelper
 
+  # Wait ajax loading on feature specs
+  config.include WaitForAjax
+
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 

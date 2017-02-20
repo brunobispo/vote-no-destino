@@ -23,6 +23,7 @@ class Answer extends React.Component {
         contestant: state.current,
       }));
     } else {
+      this.choices = this.choices.reverse();
       this.setState({step: 'form'})
     }
 
@@ -54,14 +55,15 @@ class Answer extends React.Component {
   }
 
   renderForm() {
-    return <Form choices={this.choices} onSubmit={this.handleFormSubmit.bind(this)} />;
+    return <Form survey={this.props.survey} choices={this.choices} onSubmit={this.handleFormSubmit.bind(this)} />;
   }
 
   renderResult(){
-    return <Result/>;
+    return <Result survey={this.props.survey} choices={this.choices} />;
   }
 }
 
 Answer.propTypes = {
   options: React.PropTypes.arrayOf(React.PropTypes.object),
+  survey: React.PropTypes.object,
 }
