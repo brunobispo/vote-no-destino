@@ -20,6 +20,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+# Automatically transforming JSX and using React in Rails
+gem 'react-rails'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -35,15 +37,27 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Allow translations access from JS
+gem "i18n-js", ">= 3.0.0.rc11"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
   # Rails Rspec
   gem 'rspec-rails', platform: :mri
   # Factory girl
-  gem 'factory_girl'
+  gem 'factory_girl_rails'
   # Schema annotation
   gem 'annotate'
+  # Allow rspec feature specs
+  gem 'capybara'
+  # Stub remote calls
+  gem 'webmock'
+  # Allow js on rspec
+  gem 'capybara-webkit'
+  gem 'headless'
+  # Create fake names
+  gem 'faker' 
 end
 
 group :development do
