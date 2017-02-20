@@ -61,6 +61,8 @@ group :development, :test do
   gem 'headless'
   # Create fake names
   gem 'faker' 
+  # Database cleaner
+  gem 'database_cleaner'
 end
 
 group :development do
