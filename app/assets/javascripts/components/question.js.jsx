@@ -10,7 +10,7 @@ class Question extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="question">
         {this.props.children.map((option, key) => {
           return React.cloneElement(option, {questionId: this.props.id, key: key, onChange: this.handleChange.bind(this)})
         })}

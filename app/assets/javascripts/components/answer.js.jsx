@@ -1,3 +1,5 @@
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+
 class Answer extends React.Component {
 
   constructor(props){
@@ -34,32 +36,53 @@ class Answer extends React.Component {
   }
 
   render(){
+    let content;
     if (this.state.step == 'questions') {
-      return this.renderQuestions();
+      content = this.renderQuestions();
     } else if (this.state.step == 'form') {
-      return this.renderForm();
+      content = this.renderForm();
     } else if (this.state.step == 'result') {
-      return this.renderResult();
+      content = this.renderResult();
     }
+
+    const transitionOptions = {
+      transitionName: 'steps',
+      transitionEnterTimeout: 2000,
+      transitionLeaveTimeout: 1000,
+      transitionAppear: true,
+      transitionAppearTimeout: 1000,
+      component: 'div'
+    };
+
+    return <ReactCSSTransitionGroup className="answer" {...transitionOptions}>{content}</ReactCSSTransitionGroup>;
   }
 
   renderQuestions() {
     const option1 = this.choices[this.state.current];
     const option2 = this.choices[this.state.contestant];
+    const transitionOptions = {
+      transitionName: 'options',
+      transitionEnterTimeout: 2000,
+      transitionLeaveTimeout: 1000,
+      component: 'div'
+    };
+
     return (
-      <Question key={this.state.current+this.state.contestant} id={this.state.current+this.state.contestant} onChoose={this.handleChoose.bind(this)}>
-        <Option name={option1.name} imageUrl={option1.image_url} id={this.state.current}/>
-        <Option name={option2.name} imageUrl={option2.image_url} id={this.state.contestant}/>
-      </Question>
+      <ReactCSSTransitionGroup key="questions" {...transitionOptions}>
+        <Question key={this.state.current+this.state.contestant} id={this.state.current+this.state.contestant} onChoose={this.handleChoose.bind(this)}>
+          <Option name={option1.name} imageUrl={option1.image_url} id={this.state.current}/>
+          <Option name={option2.name} imageUrl={option2.image_url} id={this.state.contestant}/>
+        </Question>
+      </ReactCSSTransitionGroup>
     );
   }
 
   renderForm() {
-    return <Form survey={this.props.survey} choices={this.choices} onSubmit={this.handleFormSubmit.bind(this)} />;
+    return <Form key="form" survey={this.props.survey} choices={this.choices} onSubmit={this.handleFormSubmit.bind(this)} />;
   }
 
   renderResult(){
-    return <Result survey={this.props.survey} choices={this.choices} />;
+    return <Result key="result" survey={this.props.survey} choices={this.choices} />;
   }
 }
 

@@ -6,15 +6,18 @@ class Option extends React.Component {
 
   render() {
     return (
-      <div>
-        <input
-          type="radio"
-          name={this.props.questionId}
-          value={this.props.id}
-          id={this.props.id}
-          onChange={this.handleChange.bind(this)}
-        />
-        <label htmlFor={this.props.id}>{this.props.name}</label>
+      <div className="option">
+        <label htmlFor={this.props.id}>          
+          {this.props.imageUrl && <span className="image"><img src={this.props.imageUrl}/></span>}
+          <input
+            type="radio"
+            name={this.props.questionId}
+            value={this.props.id}
+            id={this.props.id}
+            onChange={this.handleChange.bind(this)}
+          />
+          {this.props.name}
+        </label>
       </div>
     );
   }

@@ -45,10 +45,15 @@ GEM
       activerecord (>= 2.3.0)
       rake (>= 0.8.7)
     arel (7.1.4)
+    autoprefixer-rails (6.7.4)
+      execjs
     babel-source (5.8.35)
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
       execjs (~> 2.0)
+    bootstrap-sass (3.3.7)
+      autoprefixer-rails (>= 5.2.1)
+      sass (>= 3.3.4)
     builder (3.2.3)
     byebug (9.0.6)
     capybara (2.12.0)
@@ -85,6 +90,8 @@ GEM
     faker (1.7.3)
       i18n (~> 0.5)
     ffi (1.9.17)
+    font-awesome-rails (4.7.0.1)
+      railties (>= 3.2, < 5.1)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     hashdiff (0.3.2)
@@ -227,6 +234,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  bootstrap-sass (~> 3.3.6)
   byebug
   capybara
   capybara-webkit
@@ -234,6 +242,7 @@ DEPENDENCIES
   database_cleaner
   factory_girl_rails
   faker
+  font-awesome-rails
   headless
   i18n-js (>= 3.0.0.rc11)
   jbuilder (~> 2.5)

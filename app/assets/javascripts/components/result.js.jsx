@@ -18,14 +18,12 @@ class Result extends React.Component {
 
   render() {
     return (
-      <div>
-        <div>{I18n.t('registration_successful')}</div>
-        <div>
-          <h2>{I18n.t('your_ranking')}</h2>
+      <div className="result">
+        <div className="your_ranking">
+          <div className="alert alert-info">{I18n.t('registration_successful')}</div>
+          <h2><i className="fa fa-star-half-o"/> {I18n.t('your_ranking')}</h2>
           {this.renderLocalChoices()}
-        </div>
-        <div>
-          <h2>{I18n.t('general_ranking')}</h2>
+          <h2><i className="fa fa-globe"/> {I18n.t('general_ranking')}</h2>
           {this.renderGlobalChoices()}
         </div>
       </div>
@@ -34,9 +32,9 @@ class Result extends React.Component {
 
   renderLocalChoices() {
     return (
-      <ul>
-        {this.props.choices.map((choice, key) => <li key={key}>{key + 1}. {choice.name}</li>)}
-      </ul>
+      <ol>
+        {this.props.choices.map((choice, key) => <li key={key}>{choice.name}</li>)}
+      </ol>
     );
   }
 
@@ -45,9 +43,9 @@ class Result extends React.Component {
       return <p>{I18n.t('loading')}</p>;
     } else {
       return (
-        <ul>
-          {this.state.globalChoices.map((choice, key) => <li key={key}>{key + 1}. {choice.name}</li>)}
-        </ul>
+        <ol>
+          {this.state.globalChoices.map((choice, key) => <li key={key}>{choice.name}</li>)}
+        </ol>
       );
     }
   }

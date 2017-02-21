@@ -6,8 +6,8 @@ feature 'Answer the survey', type: :feature, js: true do
     create(:option, name: 'São Paulo', survey: survey)
     create(:option, name: 'Rio de Janeiro', survey: survey)
     visit new_answer_path
-    expect(page).to have_content('São Paulo')
-    expect(page).to have_content('Rio de Janeiro')
+    expect(page).to have_content(/São Paulo/i)
+    expect(page).to have_content(/Rio de Janeiro/i)
   end
 
   scenario 'asks to choose between each combination' do
@@ -20,9 +20,9 @@ feature 'Answer the survey', type: :feature, js: true do
 
     9.times do
       case page.text
-        when /Rio de Janeiro/ then choose 'Rio de Janeiro'
-        when /São Paulo/ then choose 'São Paulo'
-        when /Dublin/ then choose 'Dublin'
+        when /Rio de Janeiro/i then find('label', text: /Rio de Janeiro/i).click
+        when /São Paulo/i then find('label', text: /São Paulo/i).click
+        when /Dublin/i then find('label', /Dublin/i).click
       end
       break if page.text.include? t('show_result')
     end
@@ -61,11 +61,11 @@ feature 'Answer the survey', type: :feature, js: true do
 
     25.times do
       case page.text
-        when /Rio de Janeiro/ then choose 'Rio de Janeiro'
-        when /Dublin/ then choose 'Dublin'
-        when /Barcelona/ then choose 'Barcelona'
-        when /Lisboa/ then choose 'Lisboa'
-        when /São Paulo/ then choose 'São Paulo'
+        when /Rio de Janeiro/ then find('label', text: /Rio de Janeiro/i).click
+        when /Dublin/ then find('label', text: /Dublin/i).click
+        when /Barcelona/ then find('label', text: /Barcelona/i).click
+        when /Lisboa/ then find('label', text: /Lisboa/i).click
+        when /São Paulo/ then find('label', text: /São Paulo/i).click
       end
       break if page.text.include? t('show_result')
     end
@@ -84,7 +84,7 @@ feature 'Answer the survey', type: :feature, js: true do
     create(:option, name: 'São Paulo', survey: survey)
     create(:option, name: 'Rio de Janeiro', survey: survey)
     visit new_answer_path
-    choose 'São Paulo'
+    find('label', text: /São Paulo/i).click
   end
 
   def fill_the_form
