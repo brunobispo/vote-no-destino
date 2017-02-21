@@ -34,16 +34,6 @@ ActiveRecord::Schema.define(version: 20170220131641) do
     t.index ["chosen_id"], name: "index_choices_on_chosen_id", using: :btree
   end
 
-  create_table "cities", force: :cascade do |t|
-    t.string   "name"
-    t.string   "image_url"
-    t.string   "option_type"
-    t.integer  "option_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["option_type", "option_id"], name: "index_cities_on_option_type_and_option_id", using: :btree
-  end
-
   create_table "options", force: :cascade do |t|
     t.string   "name"
     t.string   "image_url"
@@ -68,5 +58,6 @@ ActiveRecord::Schema.define(version: 20170220131641) do
   add_foreign_key "answers", "surveys"
   add_foreign_key "answers", "users"
   add_foreign_key "choices", "answers"
+  add_foreign_key "choices", "options", column: "chosen_id"
   add_foreign_key "options", "surveys"
 end
