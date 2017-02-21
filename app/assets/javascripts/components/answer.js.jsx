@@ -48,7 +48,7 @@ class Answer extends React.Component {
     const transitionOptions = {
       transitionName: 'steps',
       transitionEnterTimeout: 2000,
-      transitionLeaveTimeout: 1000,
+      transitionLeave: false,
       transitionAppear: true,
       transitionAppearTimeout: 1000,
       component: 'div'

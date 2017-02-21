@@ -16,7 +16,7 @@ class Option extends React.Component {
             id={this.props.id}
             onChange={this.handleChange.bind(this)}
           />
-          {this.props.name}
+          <span className="name">{this.props.name}</span>
         </label>
       </div>
     );
