@@ -17,3 +17,5 @@ services:
       POSTGRES_PASSWORD: mypass
     depends_on:
       - db
+    tty: true
+    stdin_open: true
