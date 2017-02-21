@@ -9,11 +9,24 @@ services:
   web:
     build: .
     ports:
-      - "80:3000"
+      - "8080:3000"
     volumes:
       - './:/opt/app'
     environment:
       RAILS_ENV: development
+      POSTGRES_PASSWORD: mypass
+    depends_on:
+      - db
+    tty: true
+    stdin_open: true
+
+  test:
+    command: rspec
+    build: .
+    volumes:
+      - './:/opt/app'
+    environment:
+      RAILS_ENV: test
       POSTGRES_PASSWORD: mypass
     depends_on:
       - db

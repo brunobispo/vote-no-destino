@@ -1,24 +1,17 @@
-# README
+# Vote no destino
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A simple RoR application which asks about your favorite places to travel
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
+Before you get started, the Docker environment needs to be installed.
 
-* System dependencies
+### Launching
 
-* Configuration
+    docker-compose up -d
 
-* Database creation
+### Tests
 
-* Database initialization
+    docker-compose up -d tests
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The UI is available on `http://<HOST_IP>:8080/`
